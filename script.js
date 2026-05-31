@@ -3,7 +3,7 @@ function book() {
   let date = document.getElementById("date").value;
   let service = document.getElementById("service").value;
 
-  db.collection("bookings").add({
+  window.db.collection("bookings").add({
     name: name,
     date: date,
     service: service,
