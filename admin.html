@@ -1,0 +1,22 @@
+<h2>📊 Live Bookings</h2>
+<ul id="list"></ul>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+<script src="firebase.js"></script>
+
+<script>
+db.collection("bookings")
+  .orderBy("time", "desc")
+  .onSnapshot(snapshot => {
+    let list = document.getElementById("list");
+    list.innerHTML = "";
+
+    snapshot.forEach(doc => {
+      let d = doc.data();
+      let li = document.createElement("li");
+      li.innerText = `${d.name} - ${d.date} - ${d.service}`;
+      list.appendChild(li);
+    });
+  });
+      </script>
